@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\TestController;
+use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\BukuController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
