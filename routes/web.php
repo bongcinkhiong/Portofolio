@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('admin')->middleware('CekRole:admin')->group(function () {
 
-    Route::get('/',[AdminController::class, 'index']);
+    Route::get('/',[AdminController::class, 'index'])->name('admin.dashboard');
 
     Route::prefix('')->controller()->group(function () {
 
@@ -42,7 +42,7 @@ Route::prefix('admin')->middleware('CekRole:admin')->group(function () {
 
 Route::prefix('user')->middleware('CekRole:user')->group(function () {
 
-    Route::get('/',[UserController::class, 'index']);
+    Route::get('/',[UserController::class, 'index'])->name('user.dashboard');
 
     Route::prefix('buku')->controller(BukuController::class)->group(function () {
 

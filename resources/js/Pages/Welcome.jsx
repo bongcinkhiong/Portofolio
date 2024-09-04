@@ -8,6 +8,15 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
         document.getElementById('background')?.classList.add('!hidden');
     };
 
+    const getDashboard = () => {
+        if (auth.user && auth.user.role === 'admin') {
+            return route('admin');
+        } else if (auth.user && auth.user.role === 'user') {
+            return route('user');
+        }
+        return route('login');
+    };
+
     return (
         <>
             <Head title="Welcome" />
@@ -36,7 +45,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             <nav className="-mx-3 flex flex-1 justify-end">
                                 {auth.user ? (
                                     <Link
-                                        href={route('dashboard')}
+                                        href={getDashboard()}
                                         className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                                     >
                                         Dashboard
@@ -337,3 +346,10 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
         </>
     );
 }
+
+                                    {/* <Link
+                                        href={route('dashboard')}
+                                        className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                    >
+                                        Dashboard
+                                    </Link> */}
